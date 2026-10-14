@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "modifyHeaders",
+            "requestHeaders": [
+                {
+                    "header": "Origin",
+                    "operation": "set",
+                    "value": "https://store.jddj.com"
+                }
+            ]
+        },
+        "condition": {
+            "urlFilter": "https://sff.jddj.com",
+            "excludedDomains": ["store-hub.jddj.com", "cloud.jddj.com"],
+            "resourceTypes": ["xmlhttprequest", "script"]
+        }
+    }
+]
