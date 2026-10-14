@@ -1,0 +1,298 @@
+$borderlve1: #dcdfe6; // 一级边框
+$borderlve2: #e4e7ed; // 2级边框
+$borderlve3: #ebeef5; // 3级边框
+$borderlve3: #f2f6fc; // 4级边框
+
+$color-header: #303133;
+$color-body: #606266;
+$color-body2: #909399;
+$color-other: #c0c4cc;
+
+$default-bg: #fff;
+
+$them: #1c64f4;
+$dark-light: #7f7dd9;
+$light: #8c97de;
+$title-color: #333;
+$content-color: #666;
+$dec-color: #999;
+$white: #fff;
+$font-title: 30px;
+$font-content: 28px;
+$font-dec: 24px;
+$color-type: (
+  "them": #1c64f4,
+  "white": #fff,
+  "title": #333,
+  "content": #666,
+  "dec": #999999,
+  "link": #09f,
+  "orange": #ff6000,
+  "lightyellow": #ffeb8f,
+  "success": green,
+  "danger": red,
+  "err": red,
+  "warn": orange,
+);
+
+@each $Key, $Value in $color-type {
+  .c-#{$Key} {
+    color: $Value;
+  }
+}
+@each $Key, $Value in $color-type {
+  .bg-#{$Key} {
+    background-color: $Value;
+  }
+}
+// 字体样式
+$font-type: (
+  "title": 32px,
+  "content": 30px,
+  "dec": 26px,
+  "36": 36px,
+  "32": 32px,
+  "30": 30px,
+  "26": 26px,
+  "28": 28px,
+  "24": 24px,
+  "22": 22px,
+  "20": 20px,
+  "18": 18px,
+  "16": 16px,
+  "14": 14px,
+  "12": 12px,
+);
+
+@each $Key, $Value in $font-type {
+  .f-#{$Key} {
+    font-size: $Value;
+  }
+}
+
+$font-weight-type: (
+  "normal": normal,
+  "bold": bold,
+  "100": 100,
+  "200": 200,
+  "300": 300,
+  "400": 400,
+  "500": 500,
+  "600": 600,
+  "700": 700,
+  "800": 800,
+  "900": 900,
+);
+@each $Key, $Value in $font-weight-type {
+  .fw-#{$Key} {
+    font-weight: $Value;
+  }
+}
+
+@mixin prefix($stylename, $value, $options: webkit moz o ms) {
+  #{$stylename}: $value;
+
+  @each $option in $options {
+    @if $option == webkit {
+      -webkit-#{$stylename}: $value;
+    } @else if $option == moz {
+      -moz-#{$stylename}: #{$value};
+    } @else if $option == o {
+      -o-#{$stylename}: #{$value};
+    } @else if $option == ms {
+      -ms-#{$stylename}: #{$value};
+    }
+  }
+}
+
+// 弹性盒子
+
+@mixin flex-box($type: row, $justify: center, $align: center) {
+  @include prefix(display, flex);
+  @include prefix(box-sizing, border-box);
+  @include prefix(flex-direction, $type);
+  @include prefix(justify-content, $justify);
+  @include prefix(align-items, $align);
+}
+
+$flex-type: (
+  "auto": auto,
+  "none": none,
+  "column": column,
+  "column-reverse": column-reverse,
+  "row": row,
+  "row-reverse": "row-reverse",
+);
+$justify-conetnt: (
+  "start": flex-start,
+  "end": flex-end,
+  "center": center,
+  "between": space-between,
+  "around": space-around,
+);
+$align-items: (
+  "start": flex-start,
+  "end": flex-end,
+  "center": center,
+  "baseline ": baseline,
+  "stretch": stretch,
+);
+
+@each $flexKey, $flexValue in $flex-type {
+  @if ($flexKey!= "auto" and $flexKey!= "none") {
+    @each $Key, $value in $justify-conetnt {
+      @each $Key2, $value2 in $align-items {
+        .#{$flexValue}-#{$Key}-#{$Key2} {
+          @include flex-box($flexValue, $value, $value2);
+        }
+      }
+    }
+  }
+}
+
+// 外边距 和 内边距
+$spacing-types: (
+  m: margin,
+  p: padding,
+);
+$spacing-direction: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+);
+// 基础值
+$spacing-base-size: 1px;
+$spacing-sizes: (
+  0: 0,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6,
+  7: 7,
+  8: 8,
+  9: 9,
+  10: 10,
+  12: 12,
+  15: 15,
+  16: 16,
+  17: 17,
+  18: 18,
+  20: 20,
+  25: 25,
+  30: 30,
+  40: 40,
+  50: 50,
+  60: 60,
+  70: 70,
+  80: 80,
+  90: 90,
+);
+@each $typeKey, $type in $spacing-types {
+  //m-0
+  @each $sizeKey, $size in $spacing-sizes {
+    .#{$typeKey}-#{$sizeKey} {
+      #{$type}: $size * $spacing-base-size;
+    }
+  }
+  //mx-0
+  @each $sizeKey, $size in $spacing-sizes {
+    .#{$typeKey}x-#{$sizeKey} {
+      #{$type}-left: $size * $spacing-base-size;
+      #{$type}-right: $size * $spacing-base-size;
+    }
+  }
+  //my-0
+  @each $sizeKey, $size in $spacing-sizes {
+    .#{$typeKey}y-#{$sizeKey} {
+      #{$type}-top: $size * $spacing-base-size;
+      #{$type}-bottom: $size * $spacing-base-size;
+    }
+  }
+  //mt-0,mb-0,ml-0,mr-0
+  @each $dirKey, $dir in $spacing-direction {
+    @each $sizeKey, $size in $spacing-sizes {
+      .#{$typeKey}#{$dirKey}-#{$sizeKey} {
+        #{$type}-#{$dir}: $size * $spacing-base-size;
+      }
+    }
+  }
+}
+
+// 超出隐藏
+@mixin ellipsis($rowCount: 1, $width: 100%) {
+  width: $width;
+  @if $rowCount <=1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $rowCount;
+    -webkit-box-orient: vertical;
+  }
+}
+// border-bottom
+@mixin border-bottom($width: 100%, $height: 1px, $color: #eee) {
+  position: relative;
+  &::after {
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    width: $width;
+    margin-left: 50%;
+    content: "";
+    height: $height;
+    background: $color;
+    transform: translateX(-50%);
+  }
+}
+
+@mixin images {
+  & > img {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+// for text-decoration,line types
+$line-type: (
+  "underline": underline,
+  "overline": overline,
+  "line-through": line-through,
+);
+
+@each $key, $val in $line-type {
+  .text-#{$key} {
+    text-decoration: $val;
+  }
+}
+
+@mixin setFont($size: $font-content, $color: $content-color, $weight: normal) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+  // letter-spacing: 0.5px;
+}
+
+@mixin linear-gradient(
+  $orientation: to right,
+  $firstColor: #7876cc,
+  $sencondColor: #8c97de
+) {
+  background: linear-gradient($orientation, $firstColor, $sencondColor);
+}
+
+@mixin devborder($color: red) {
+  @if ($isDev) {
+    box-sizing: border-box;
+    border: 1px solid $color;
+  }
+}

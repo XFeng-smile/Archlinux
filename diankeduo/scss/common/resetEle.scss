@@ -1,0 +1,132 @@
+.el-message {
+  // top: 48% !important;
+}
+
+.resetStyle .el-dialog__header {
+  padding: 0;
+}
+
+// table重置1
+.resetStyle.el-table {
+  font-size: 12px;
+  color: #333;
+}
+
+.resetStyle.el-table th.is-leaf {
+  height: 30px;
+  padding: 0;
+  background-color: #f5f5f5;
+  font-size: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.resetStyle.el-table th.gutter {
+  background-color: #f5f5f5;
+}
+
+.resetStyle.el-table .cell {
+  text-align: center;
+  // overflow: inherit;
+}
+
+.resetStyle .el-dialog__body {
+  padding: 20px !important;
+}
+
+.resetStylepb .el-dialog__body {
+  padding: 10px 20px !important;
+}
+
+.resetStyle.el-table th.is-leaf {
+  border-bottom: none;
+}
+
+.hiddenThead {
+  .has-gutter {
+    display: none;
+  }
+}
+
+// table重置2
+.resetTable.el-table td {
+  padding: 5px 0;
+}
+
+table thead tr th div {
+  font-weight: normal !important;
+}
+
+//弹窗居中
+.resetStyle.el-dialog__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .el-dialog {
+    margin: 0;
+  }
+}
+
+// 日历重置1
+.reset-calendar {
+  .el-calendar__header {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .el-calendar__body {
+    padding: 5px 0;
+  }
+
+  .el-calendar-table thead {
+    display: none;
+  }
+
+  .el-calendar-table tr td,
+  .el-calendar-table tr td:first-child,
+  .el-calendar-table tr:first-child td {
+    border: none;
+  }
+
+  .el-calendar-table .el-calendar-day {
+    height: 22px;
+    line-height: 22px;
+    padding: 0px;
+    text-align: center;
+  }
+
+  .el-calendar-table td.is-today p {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 auto;
+    color: #333;
+    border: 1px solid #388eef;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+
+  .el-button--mini,
+  .el-button--mini.is-round {
+    padding: 4px 8px;
+  }
+
+  .el-calendar-table .el-calendar-day:hover,
+  .el-calendar-table td.is-selected {
+    background-color: transparent;
+  }
+}
+
+.el-message {
+  min-width: 130px !important;
+}
+
+.el-tooltip__popper {
+  max-width: 254px !important;
+  line-height: 20px !important;
+  text-align: justify;
+}
